@@ -1,0 +1,86 @@
+body{
+        font-family: sans-serif;
+        background-color: #fff4e6;
+        margin: 0;
+        padding: 2rem;
+      }
+      .container{
+        max-width:1200px;
+        margin:auto;
+      }
+      .hero{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          gap: 2rem;
+          padding: 4rem 0;
+      }
+      .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    sl-card {
+       border: 1px  #b23a48;
+      --border-radius: 1rem;
+      
+      
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    h1, h2 {
+      color: #222;
+    }
+
+    .tags sl-tag {
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+    }
+	
+	.seperator{
+		margin-left: 20rem;
+	}
+
+.top{
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.label-on-left {
+    --label-width: 5rem;
+    --gap-width: 0.5rem;
+  }
+
+  .label-on-left + .label-on-left {
+    margin-top: var(--sl-spacing-medium);
+  }
+
+  .label-on-left::part(form-control) {
+    display: grid;
+    grid: auto / var(--label-width) 1fr;
+    gap: var(--sl-spacing-3x-small) var(--gap-width);
+    align-items: center;
+  }
+
+  .label-on-left::part(form-control-label) {
+    text-align: right;
+  }
+
+  .label-on-left::part(form-control-help-text) {
+    grid-column-start: 2;
+  }
+  
+  .custom-card{
+	  width:97%
+  }
+  
+  .custom-button{
+	  margin-left: 100rem;
+  }

@@ -1,0 +1,66 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+    <link rel="stylesheet" media="(prefers-color-scheme:light)" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="(prefers-color-scheme:dark)" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" onload="document.documentElement.classList.add('sl-theme-dark');" />
+</head>
+<body>
+  <sl-card class="top">
+  <section class="hero">
+     <div>
+      <h1>Product Price Estimator</h1>
+      <p> 
+          Making Price Simple,Fair and Profitable.<br>
+		  Enter your expenses, hours, and goals — and get instant suggestions for <strong> sustainable, fair, and profitable pricing </strong>.
+          Whether you sell handmade goods, run a small shop, our model helps you:
+         <ul>
+           <li>Break down your true costs (materials, effort, hosting, support)</li>
+           <li>Include your time’s real value</li>
+           <li>Set a clear target margin</li>
+         </ul>
+      </p>
+    </div>
+    <div class="seperator"><script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="panangipalliSaiCharan" data-color="#5F7FFF" data-emoji="📖"  data-font="Cookie" data-text="Buy me a book" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script></div>
+</div>
+  </section>
+  <h2>Details:</h2>
+  <div class="projects">
+    <sl-details summary="Enter Overall Details" open>
+		<sl-card class="custom-card">
+			<sl-input class="label-on-left" label="Monthly Rent" help-text="Enter Total Monthly Rent" type="Number" id="monthlyrent" ></sl-input>
+			<sl-input class="label-on-left" label="Monthly Electricity Bill" help-text="Enter Total Electricity Bill" type="Number" id="monthlyEletricity" ></sl-input>
+			<sl-input class="label-on-left" label="Monthly Helpers Salary" help-text="Enter Total Monthly Salary Paid to your workers" type="Number" id="monthlyHelperExpense" ></sl-input>
+			<sl-input class="label-on-left" label="Monthly Misc Expenses" help-text="Enter Total Monthly Misc Expenses" type="Number" id="monthlyMiscExpenses"></sl-input>
+			<sl-input class="label-on-left" label="No of Products" help-text="Enter Total no of different products" type="Number" id="noOfProducts" ></sl-input>
+			<sl-input class="label-on-left" label="Total Units sold per month" help-text="Enter Total units sold for all products" type="Number" id="totalUnitsSoldOverall" ></sl-input>
+			<div class="custom-button">
+				<sl-button size="large" pill variant="primary" title="You can store these details in your Browser, so that when you open these details will be prefilled">Save</sl-button>
+			</div>
+			
+		</sl-card>
+	</sl-details>
+	<sl-details summary="Enter Product Details" open>
+		<sl-card class="custom-card">
+			<sl-input class="label-on-left" label="Product Name" id="productName"></sl-input>
+			<sl-input class="label-on-left" label="Monthly Bulk Materials Cost" help-text="Enter monthly Bulk Materials' cost" type="Number" id="monthlyBulkMaterialsCost" ></sl-input>
+			<sl-input class="label-on-left" label="No of units made from bulk material" help-text="Enter Total no of units made from the bulk materials" type="Number" id="noOfUnitsMadeFromBulk"></sl-input>
+			<sl-input class="label-on-left" label="Monthly Units Sold" help-text="Enter Total no of units sold monthly" type="Number" id="monthlyUnitsSold"></sl-input>
+			<sl-input class="label-on-left" label="Optional Market Price" help-text="Enter your current product price or market price per unit" type="Number" id="optionalMarketPrice"></sl-input>
+		</sl-card>
+	</sl-details>
+	<sl-details summary="Enter Other Details" open>
+		<sl-card class="custom-card">
+			<sl-input class="label-on-left" label="No of Working Days" help-text="Enter Total no of working days per month" type="Number" id="noOfWorkingDays"></sl-input>
+			<sl-input class="label-on-left" label="Target Profit Margin(%)" help-text="Enter Target profit margin (%)" type="Number" id="targetProfitMargin"></sl-input>
+		</sl-card>
+	</sl-details>
+    <div>
+		<sl-button size="large" pill variant="primary" title="You can store these details in your Browser, so that when you open these details will be prefilled">Estimate Product Price</sl-button>
+	</div>
+    
+</div>
+  </sl-card>
+
+<script src="script.js"></script>
+</body>
