@@ -13,9 +13,9 @@ optionalMarketPrice=undefined;
 noOfWorkingDaysPerMonth=undefined;
 totalProfitMargin=undefined;
 
-productPriceModel1=undefined;
-productPriceModel2=undefined;
-
+productSuggestedPrice=undefined;
+productBasePrice=undefined;
+isdeficit=undefined;
 let overallDetailsJSON= JSON.parse(localStorage.getItem('price-predictor-overall'));
 
 if(overallDetailsJSON != undefined){
@@ -126,12 +126,33 @@ function estimatePrice(){
 			slAlertDiv.innerText="All the fields are not populated.";
 			alertsDiv.appendChild(slAlertDiv);
 	}else{
-		let totalOverhead= monthlyEletricity+monthlyHelperExpense+monthlyRent+monthlyMiscExpense;
-		let materialCostPerUnit=productBulkMaterialCost/noOfUnitsMadeFromBulkMaterial;
-		let model1Overhead=(noOfunitsSoldMonthly*totalOverhead)/(totaloverallUnitsSoldPerMonth*noOfWorkingDaysPerMonth);
-		
-		productPriceModel1=materialCostPerUnit+model1Overhead;
-		console.log(productPriceModel1,"price 1");
+		isdeficit=false;
+		let totalOverhead= parseFloat(monthlyEletricity)+parseFloat(monthlyHelperExpense)+parseFloat(monthlyRent)+parseFloat(monthlyMiscExpense);
+		console.log(totalOverhead,monthlyEletricity,monthlyHelperExpense,monthlyRent,monthlyMiscExpense,'overhead');
+		let materialCostPerUnit=parseFloat(productBulkMaterialCost)/parseFloat(noOfUnitsMadeFromBulkMaterial);
+		console.log(materialCostPerUnit,'per unit material');
+		let model1Overhead=totalOverhead/parseFloat(totaloverallUnitsSoldPerMonth);
+		console.log(model1Overhead,'overhead');
+		productBasePrice=Math.round((materialCostPerUnit+model1Overhead));
+		productSuggestedPrice=Math.round(productBasePrice*(1+(parseFloat(totalProfitMargin)/100)));
+		if(parseFloat(noOfUnitsMadeFromBulkMaterial)>parseFloat(noOfunitsSoldMonthly)){
+			console.log('inside loop');
+			isdeficit=true;
+			let deficit=Math.round(((parseFloat(noOfUnitsMadeFromBulkMaterial)-parseFloat(noOfunitsSoldMonthly))*materialCostPerUnit)/parseFloat(noOfunitsSoldMonthly));
+			productSuggestedPrice=productSuggestedPrice+deficit;
+		}
+		const resultWindow = document.getElementById("resultCard");
+		resultWindow.innerHTML='';
+		const resultCard= document.createElement("sl-card");
+		resultCard.classList.add("card-header");
+		resultCard.classList.add("custom-card");
+		const headerSlot=document.createElement("div");
+		headerSlot.slot="header";
+		headerSlot.innerText="Suggessted Price";
+		resultCard.appendChild(headerSlot);
+		let resultline= isdeficit?`There is deficit, Assuming the items will not be sold for next month, wastage is being added to suggested price. \n Break-Even Price:     ${productBasePrice} \n Suggested Price:     ${productSuggestedPrice}` :`Break-Even Price:     ${productBasePrice} \n Suggested Price:     ${productSuggestedPrice}`;
+		resultCard.innerText=resultline;
+		resultWindow.appendChild(resultCard);
 		
 	}
 }
