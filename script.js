@@ -128,15 +128,11 @@ function estimatePrice(){
 	}else{
 		isdeficit=false;
 		let totalOverhead= parseFloat(monthlyEletricity)+parseFloat(monthlyHelperExpense)+parseFloat(monthlyRent)+parseFloat(monthlyMiscExpense);
-		console.log(totalOverhead,monthlyEletricity,monthlyHelperExpense,monthlyRent,monthlyMiscExpense,'overhead');
 		let materialCostPerUnit=parseFloat(productBulkMaterialCost)/parseFloat(noOfUnitsMadeFromBulkMaterial);
-		console.log(materialCostPerUnit,'per unit material');
 		let model1Overhead=totalOverhead/parseFloat(totaloverallUnitsSoldPerMonth);
-		console.log(model1Overhead,'overhead');
 		productBasePrice=Math.round((materialCostPerUnit+model1Overhead));
 		productSuggestedPrice=Math.round(productBasePrice*(1+(parseFloat(totalProfitMargin)/100)));
 		if(parseFloat(noOfUnitsMadeFromBulkMaterial)>parseFloat(noOfunitsSoldMonthly)){
-			console.log('inside loop');
 			isdeficit=true;
 			let deficit=Math.round(((parseFloat(noOfUnitsMadeFromBulkMaterial)-parseFloat(noOfunitsSoldMonthly))*materialCostPerUnit)/parseFloat(noOfunitsSoldMonthly));
 			productSuggestedPrice=productSuggestedPrice+deficit;
@@ -170,7 +166,6 @@ function storeOverallDetailsLocal(){
 	dummyJson.stored=true;
 	localStorage.setItem('price-predictor-overall',JSON.stringify(dummyJson));
 	
-	console.log(JSON.stringify(localStorage.getItem('price-predictor-overall')));
 }
 
 
